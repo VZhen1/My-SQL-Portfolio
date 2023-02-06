@@ -1,0 +1,22 @@
+CREATE TABLE movie_inventory (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER, release_date INTEGER); 
+
+INSERT INTO movie_inventory VALUES (1, "Uncharted", 38, 29.99, 2022);
+INSERT INTO movie_inventory VALUES (2, "The Mummy", 18, 19.99, 1999); 
+INSERT INTO movie_inventory VALUES (3, "Night At The Museum", 73, 19.99, 2006);
+INSERT INTO movie_inventory VALUES (4, "Captain Marvel", 83, 34.99, 2019); 
+INSERT INTO movie_inventory VALUES (5, "Mamma Mia! The Movie", 24, 14.99, 2008); 
+INSERT INTO movie_inventory VALUES (6, "Crazy Rich Asians", 20, 19.99, 2018); 
+INSERT INTO movie_inventory VALUES (7, "Assassin's Creed", 57, 14.99,2016);
+INSERT INTO movie_inventory VALUES (8, "Ocean's 8", 18, 24.99, 2018);
+INSERT INTO movie_inventory VALUES (9, "Hidden Figures", 43, 19.99, 2016);
+INSERT INTO movie_inventory VALUES (10, "Maleficent", 34, 9.99, 2014);
+INSERT INTO movie_inventory VALUES (11, "Resident Evil: Extinction", 5, 9.99, 2007); 
+INSERT INTO movie_inventory VALUES (12, "Percy Jackson & the Olympians: The Lightning Thief", 6, 4.99, 2010);
+INSERT INTO movie_inventory VALUES (13, "Pitch Perfect", 3, 4.99, 2012);
+INSERT INTO movie_inventory VALUES (14, "The Fate of the Furious", 44, 29.99, 2017);
+INSERT INTO movie_inventory VALUES (15, "Glass", 30, 19.99, 2019);
+INSERT INTO movie_inventory VALUES (16, "Hellboy", 10, 4.99, 2004);
+INSERT INTO movie_inventory VALUES (17, "Jumanji", 74, 9.99, 1995); 
+SELECT * FROM movie_inventory ORDER BY price;
+
+SELECT price, SUM(quantity) FROM movie_inventory GROUP BY price
