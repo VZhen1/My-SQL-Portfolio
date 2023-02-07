@@ -1,0 +1,68 @@
+/* Create table about the people and what they do here */
+CREATE TABLE celebrities (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, age INTEGER);
+INSERT INTO celebrities (fullname, age) VALUES ("George Clooney", 61); 
+INSERT INTO celebrities (fullname, age) VALUES ("Alicia Vikander", 34);
+INSERT INTO celebrities (fullname, age) VALUES ("Michael Fassbender", 45);
+INSERT INTO celebrities (fullname, age) VALUES ("Shawn Mendes", 24);
+INSERT INTO celebrities (fullname, age) VALUES ("Taylor Swift", 33);
+INSERT INTO celebrities (fullname, age) VALUES ("Stephen King", 75);
+INSERT INTO celebrities (fullname, age) VALUES ("J. K. Rowling", 57);
+INSERT INTO celebrities (fullname, age) VALUES ("Rick Riordan", 58);
+INSERT INTO celebrities (fullname, age) VALUES ("Amal Clooney", 45);
+INSERT INTO celebrities (fullname, age) VALUES ("Tabitha King", 73);
+INSERT INTO celebrities (fullname, age) VALUES ("Neil Murray", 51);
+INSERT INTO celebrities (fullname, age) VALUES ("Becky Riordan", 58); 
+
+CREATE TABLE marriages (id INTEGER PRIMARY KEY AUTOINCREMENT, celeb1_id INTEGER, celeb2_id INTEGER);
+
+INSERT INTO marriages (celeb1_id, celeb2_id) VALUES (2, 3);
+INSERT INTO marriages (celeb1_id, celeb2_id) VALUES (1, 9);
+INSERT INTO marriages (celeb1_id, celeb2_id) VALUES (6, 10);
+INSERT INTO marriages (celeb1_id, celeb2_id) VALUES (7, 11);
+INSERT INTO marriages (celeb1_id, celeb2_id) VALUES (8, 12);
+
+
+CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, celeb_id INTEGER, title TEXT, release_date INTEGER);
+
+INSERT INTO books (celeb_id, title, release_date) VALUES (8, "The Lightning Thief", 2005);
+INSERT INTO books (celeb_id, title, release_date) VALUES (6, "IT",1986);
+INSERT INTO books (celeb_id, title, release_date) VALUES (8, "The Lost Hero", 2010);
+INSERT INTO books (celeb_id, title, release_date) VALUES (7, "Harry Potter and the Chamber of Secrets", 1998);
+INSERT INTO books (celeb_id, title, release_date) VALUES (7, "The Casual Vacancy", 2012);
+INSERT INTO books (celeb_id, title, release_date) VALUES (6, "The Shining", 1977);
+INSERT INTO books (celeb_id, title, release_date) VALUES (8, "The Sea of Monsters", 2006);
+INSERT INTO books (celeb_id, title, release_date) VALUES (6, "Misery", 1987);
+INSERT INTO books (celeb_id, title, release_date) VALUES (7, "Fanatstic Beastes: The Crimes of Grindlewald", 2018);
+INSERT INTO books (celeb_id, title, release_date) VALUES (7, "Harry Potter and the Deathly Hallows", 2007);
+INSERT INTO books (celeb_id, title, release_date) VALUES (8, "The Son of Neptune", 2011);
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, celeb_id INTEGER, title TEXT, release_date INTEGER, duration_s INTEGER);
+
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (4, "Stitches", 2015, 240);
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (4, "Mercy", 2016, 249);
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (5, "Anti-Hero", 2022, 309);
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (2, "Blue Bayou", 2021, 156);
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (5, "Bad Blood", 2014, 244);
+INSERT INTO songs (celeb_id, title, release_date, duration_s) VALUES (5, "Enchanted", 2010, 352);
+
+/* What books were written by who? */
+SELECT fullname, books.title FROM celebrities 
+JOIN books 
+ON celebrities.id = books.celeb_id
+ORDER BY fullname ASC;
+
+/* Who is married to who?*/ 
+SELECT a.fullname as Partner_A, b.fullname as Partner_B FROM marriages
+JOIN celebrities a
+ON celeb1_id = a.id
+JOIN celebrities b
+ON celeb2_id = b.id;
+
+/* Have any of these celebrities released their own song and when were they released? */
+SELECT fullname, songs.title, songs.release_date 
+    FROM celebrities
+    LEFT OUTER JOIN songs
+    ON celebrities.id = songs.celeb_id
+    ORDER BY release_date DESC; 
+ 
+ 
