@@ -1,0 +1,31 @@
+/* What does the app's SQL look like? */
+
+CREATE TABLE Brawlers_scores (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, brawler_name TEXT, score INTEGER);
+
+INSERT INTO Brawlers_scores (user_id, brawler_name, score) VALUES (4015, "Masher", 4500); 
+INSERT INTO Brawlers_scores (user_id, brawler_name, score) VALUES (4015, "Masher", 5100);
+INSERT INTO Brawlers_scores (user_id, brawler_name, score) VALUES (4016, "Crusher", 5200);
+INSERT INTO Brawlers_scores (user_id, brawler_name, score) VALUES (4017, "Puncher", 1200); 
+INSERT INTO Brawlers_scores (user_id, brawler_name, score) VALUES (4015, "Crusher", 5500); 
+
+SELECT * FROM Brawlers_scores;
+
+UPDATE Brawlers_scores SET score = 5600 WHERE id = 3;
+
+SELECT * FROM Brawlers_scores; 
+
+ALTER TABLE Brawlers_scores ADD duration_m INTEGER; 
+
+SELECT * FROM Brawlers_scores; 
+
+UPDATE Brawlers_scores SET duration_m = 6 WHERE id = 1; 
+UPDATE Brawlers_scores SET duration_m = 6.5 WHERE id = 2; 
+UPDATE Brawlers_scores SET duration_m = 5.5 WHERE id = 3; 
+UPDATE Brawlers_scores SET duration_m = 2 WHERE id = 4;
+UPDATE Brawlers_scores SET duration_m = 1.5 WHERE id = 5; 
+
+SELECT * FROM Brawlers_scores; 
+
+DELETE FROM Brawlers_scores WHERE id = 5; 
+
+SELECT * FROM Brawlers_scores; 
